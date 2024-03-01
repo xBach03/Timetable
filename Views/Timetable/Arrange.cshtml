@@ -1,0 +1,278 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["Title"] = "Arrange timetable";
+}
+@using Microsoft.AspNetCore.Identity
+@using Test.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+<div class="container">
+	<ul class="list-inline">
+		@foreach (var subject in ViewBag.Subjects)
+			{
+				<li class="list-inline-item">
+				<button class="mt-2 btn btn-primary" onclick="showClasses('@subject.SubjectId')">@subject.SubjectId: @subject.SubjectName</button>
+				</li>
+			}
+	</ul>
+</div>
+@* <div class="container">
+	<ul class="list-inline">
+		@foreach (var subject in ViewBag.SelectedSubjects)
+		{
+			<li class="list-inline-item">
+				<button class="mt-2 btn btn-primary">@subject</button>
+			</li>
+		}
+	</ul>
+</div> *@
+<div class="container">
+	<div>
+		<table class="table table-bordered text-center" id="myTable">
+			<tr class="bg-light-gray">
+				<td class="text-uppercase">time</td>
+				<td class="text-uppercase">monday</td>
+				<td class="text-uppercase">tuesday</td>
+				<td class="text-uppercase">wednesday</td>
+				<td class="text-uppercase">thursday</td>
+				<td class="text-uppercase">friday</td>
+				<td class="text-uppercase">saturday</td>
+			</tr>
+			<tr>
+				<td class="align-middle">06:45</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">07:00</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">07:30</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">08:15</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">08:25</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">09:20</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">09:30</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">10:05</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">10:15</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">11:00</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">11:45</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">12:30</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">12:45</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">13:15</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">14:00</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">14:10</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">14:55</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">15:05</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">15:20</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">15:50</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">16:00</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">16:45</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">17:05</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="align-middle">17:30</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</div>
+@if (SignInManager.IsSignedIn(User))
+{
+	<div class="btn btn-success" onclick="saveTimetable()">Save</div>
+}
+<script src="~/js/Timetable.js" asp-append-version="true"></script>
+
+
+
+
+
+
+
+
+
+
+

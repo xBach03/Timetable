@@ -1,0 +1,21 @@
+﻿@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["Title"] = "TermSearch";
+}
+<h1>Term search result</h1>
+	@foreach (var User in ViewBag.UserNames)
+	{
+		<h2>User: @User.UserName</h2>
+		<ul>
+		@foreach (var Timetable in ViewBag.Timetables)
+		{
+			if (Timetable.UserId == User.Id)
+			{
+				<li><h3><a href="@($"https://localhost:7077/Search/DisplayTable?timetableId={@Timetable.TimetableId}")">Timetable Id: @Timetable.TimetableId - Term: @Timetable.Term</a></h3></li>
+			}
+		}
+		</ul>  
+	}
+
